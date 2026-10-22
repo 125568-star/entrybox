@@ -6,7 +6,8 @@ Blue, mobile-friendly starter-box storefront for Brisbane, with a Supabase-backe
 
 ## Current features
 
-- New Flat, First Kitchen, Picnic, Bathroom, Student, and Build Your Own boxes
+- New Flat, First Kitchen, Picnic, Bathroom, Student, Present Box, and Build Your Own boxes
+- Present Box gift builder with recipient, occasion and gift message in the preview (no orders yet)
 - 23 example products organised by category
 - Add or remove items, adjust quantities and search products
 - Enter custom item requests to be quoted separately
