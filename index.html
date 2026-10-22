@@ -12,8 +12,8 @@
 <body>
 <div class="notice">📍 BRISBANE, QUEENSLAND · CONCEPT WEBSITE — NO LIVE ORDERS</div>
 <header class="wrap">
-<a class="logo" href="#top"><span class="logo-icon">◇</span>entrybox<span class="dot">.</span></a>
-<nav><a href="#boxes">Starter boxes</a><a href="#builder">Build your own</a><a href="#how">How it works</a></nav>
+<a class="logo" href="#top" aria-label="EntryBox home"><span class="logo-icon" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><rect x="3" y="3" width="58" height="58" rx="13" fill="#0770ef"/><path d="M12 28 32 36 52 28 32 19Z" fill="#63c2ff"/><path d="M12 30 32 38 32 55 12 46Z" fill="#0950c9"/><path d="M52 30 32 38 32 55 52 46Z" fill="#1365dc"/><path d="m32 9 6 13 14 2-10 10 3 14-13-7-13 7 3-14-10-10 14-2Z" fill="white"/></svg></span><span>ENTRY<span class="logo-box">BOX</span></span></a>
+<nav><a href="#boxes">Starter boxes</a><a href="#builder">Build your own</a><a href="#boxes" id="present-link">Present Box</a><a href="#how">How it works</a></nav>
 <button id="cart-nav" class="cart-link">📦 My box <span id="count">0</span></button>
 </header>
 <main id="top">
@@ -22,10 +22,10 @@
 <div>
 <div class="eyebrow">✦ THE EASIER WAY TO GET STARTED</div>
 <h1>Everything you need.<br><em>We put it in a box.</em></h1>
-<p class="lead">Moving into a new flat? Setting up a kitchen? Planning a picnic? Choose a box, remove what you don't need, add what you do, and skip shopping for every little thing.</p>
+<p class="lead">Moving into a new flat? Setting up a kitchen? Planning a picnic or buying somebody a present? Choose a box, remove what you don't need, add what you do, and skip shopping for every little thing.</p>
 <div class="actions">
 <a href="#boxes" class="primary">Explore starter boxes →</a>
-<button class="secondary" id="start-empty">Build my own box</button>
+<button class="secondary" id="start-empty">Build my own box</button><button class="secondary gift-action" id="gift-start">🎁 Create a Present Box</button>
 </div>
 <div class="perks">✓ Pick your essentials &nbsp; ✓ Customise any box &nbsp; ✓ Brisbane focused</div>
 </div>
@@ -47,6 +47,16 @@
 <div class="builder-grid">
 <div class="panel">
 <h3>Choose your essentials</h3>
+<div id="gift-details" class="gift-details" hidden>
+<div class="gift-title">🎁 Your Present Box</div>
+<p>You want to buy a present for somebody? Do it like this. Pick the items you want to give and add a personal touch.</p>
+<div class="gift-fields">
+<label for="gift-recipient">Who is the gift for? (optional)<input id="gift-recipient" type="text" maxlength="80" placeholder="Recipient's name"></label>
+<label for="gift-occasion">Occasion (optional)<select id="gift-occasion"><option value="">Just because</option><option>Birthday</option><option>Congratulations</option><option>Housewarming</option><option>Thank you</option><option>Other</option></select></label>
+</div>
+<label class="gift-message-label" for="gift-message">Personal message (optional)<textarea id="gift-message" rows="2" maxlength="300" placeholder="Write a note to go with the present…"></textarea></label>
+<small>This is a preview only. Gifts are not being ordered or sent yet.</small>
+</div>
 <div id="filters" class="filters"></div>
 <input id="search" type="search" placeholder="Search products..." aria-label="Search products">
 <div id="products" class="product-grid"></div>
@@ -72,13 +82,13 @@
 <section class="wrap section" id="how">
 <div class="eyebrow">NO MORE LONG SHOPPING LISTS</div><h2>Three steps. That's it.</h2>
 <div class="steps">
-<div><span>01</span><h3>Choose a box</h3><p>Start with New Flat, Kitchen, Picnic, Bathroom, Student—or nothing at all.</p></div>
+<div><span>01</span><h3>Choose a box</h3><p>Start with New Flat, Kitchen, Picnic, Bathroom, Student, Present Box—or nothing at all.</p></div>
 <div><span>02</span><h3>Make it yours</h3><p>See exactly what's included. Remove unwanted items or adjust quantities.</p></div>
 <div><span>03</span><h3>Everything together</h3><p>When EntryBox launches, we'll pack your essentials together for local delivery.</p></div>
 </div>
 </section>
 </main>
-<footer><div class="wrap footer"><div class="logo">entrybox<span class="dot">.</span></div><small>Brisbane, Queensland · Concept demonstration · No purchases or payment processing</small></div></footer>
+<footer><div class="wrap footer"><div class="logo">ENTRY<span class="logo-box">BOX</span></div><small>Brisbane, Queensland · Concept demonstration · No purchases or payment processing</small></div></footer>
 <div class="overlay" id="overlay" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title">Your EntryBox preview</h2><p>This is a design preview, not an order.</p><pre id="modal-contents"></pre><button class="primary full" id="close-modal">Continue customising</button></div></div>
 </body>
 </html>
