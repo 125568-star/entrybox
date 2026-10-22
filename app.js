@@ -47,20 +47,23 @@ function fillBox(box, scroll = true) {
     if (products.some(p => p.id === item.product_id)) chosen.set(item.product_id, item.quantity);
   }
   filter = 'All'; search = ''; $('#search').value = '';
+  $('#gift-recipient').value = '';
+  $('#gift-occasion').value = '';
+  $('#gift-message').value = '';
   render();
   if (scroll) $('#builder').scrollIntoView({behavior:'smooth'});
 }
 function renderKits() {
   const parent = $('#kits'); parent.replaceChildren();
   for (const box of boxes) {
-    const button = elem('button', 'kit-card' + (activeBox?.id === box.id ? ' active' : ''));
+    const button = elem('button', 'kit-card' + (box.slug === 'present' ? ' present-kit' : '') + (activeBox?.id === box.id ? ' active' : ''));
     button.type = 'button';
     button.setAttribute('aria-label','Choose '+box.title);
     const art = elem('div','kit-art');
     art.style.background = /^#[0-9a-fA-F]{6}$/.test(box.background) ? box.background : '#edf3ff';
     for (const icon of box.icons || ['📦']) art.append(elem('span','',icon));
     const body = elem('div','kit-details');
-    body.append(elem('h3','',box.title),elem('p','',box.description),elem('span','kit-link','Customise box →'));
+    body.append(elem('h3','',box.title),elem('p','',box.description),elem('span','kit-link',box.slug === 'present' ? 'Create a Present Box →' : 'Customise box →'));
     button.append(art,body);
     button.addEventListener('click',() => fillBox(box));
     parent.append(button);
@@ -132,7 +135,19 @@ function renderSummary() {
   $('#count').textContent=String(quantityTotal+requests.length);
   $('#total').textContent=formatAUD(total);
 }
-function render(){renderKits();renderFilters();renderProducts();renderSummary();}
+function render(){
+  $('#gift-details').hidden = activeBox?.slug !== 'present';
+  renderKits();renderFilters();renderProducts();renderSummary();
+}
+function openPresentBox(){
+  const present = boxes.find(b => b.slug === 'present');
+  if (present) fillBox(present);
+}
+$('#gift-start').addEventListener('click',openPresentBox);
+$('#present-link').addEventListener('click',event=>{
+  const present = boxes.find(b => b.slug === 'present');
+  if (present) {event.preventDefault();fillBox(present);}
+});
 $('#search').addEventListener('input',event=>{search=event.target.value;renderProducts();});
 $('#start-empty').addEventListener('click',()=>{
   const empty=boxes.find(b=>b.slug==='own');
@@ -154,7 +169,18 @@ $('#review').addEventListener('click',()=>{
   });
   for(const r of requests)rows.push('Request: '+r+' (price to be confirmed)');
   $('#modal-title').textContent=activeBox?.title||'Your EntryBox';
-  $('#modal-contents').textContent=(rows.length?rows.join('\n'):'Your box is empty.')+'\n\nIllustrative subtotal: '+$('#total').textContent+'\n\nPreview only — no order placed.';
+  let giftHeader = '';
+  if (activeBox?.slug === 'present') {
+    const recipient = $('#gift-recipient').value.trim();
+    const occasion = $('#gift-occasion').value;
+    const message = $('#gift-message').value.trim();
+    const details = [];
+    if(recipient) details.push('For: '+recipient);
+    if(occasion) details.push('Occasion: '+occasion);
+    if(message) details.push('Gift message: '+message);
+    if(details.length) giftHeader = details.join('\n')+'\n\n';
+  }
+  $('#modal-contents').textContent=giftHeader+(rows.length?rows.join('\n'):'Your box is empty.')+'\n\nIllustrative subtotal: '+$('#total').textContent+'\n\nPreview only — no order placed.';
   $('#overlay').hidden=false;
 });
 $('#close-modal').addEventListener('click',()=>$('#overlay').hidden=true);
