@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#285dec">
+<meta name="description" content="EntryBox Brisbane: Everything you need. We put it in a box. Choose a starter box and customise the contents.">
+<title>EntryBox | Everything you need. We put it in a box.</title>
+<link rel="stylesheet" href="./style.css">
+<script src="./app.js" defer></script>
+</head>
+<body>
+<div class="notice">📍 BRISBANE, QUEENSLAND · CONCEPT WEBSITE — NO LIVE ORDERS</div>
+<header class="wrap">
+<a class="logo" href="#top"><span class="logo-icon">◇</span>entrybox<span class="dot">.</span></a>
+<nav><a href="#boxes">Starter boxes</a><a href="#builder">Build your own</a><a href="#how">How it works</a></nav>
+<button id="cart-nav" class="cart-link">📦 My box <span id="count">0</span></button>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">✦ THE EASIER WAY TO GET STARTED</div>
+<h1>Everything you need.<br><em>We put it in a box.</em></h1>
+<p class="lead">Moving into a new flat? Setting up a kitchen? Planning a picnic? Choose a box, remove what you don't need, add what you do, and skip shopping for every little thing.</p>
+<div class="actions">
+<a href="#boxes" class="primary">Explore starter boxes →</a>
+<button class="secondary" id="start-empty">Build my own box</button>
+</div>
+<div class="perks">✓ Pick your essentials &nbsp; ✓ Customise any box &nbsp; ✓ Brisbane focused</div>
+</div>
+<div class="hero-art" aria-label="Illustration of EntryBox containing household essentials">
+<div class="orbit"></div><div class="orbit orbit2"></div>
+<div class="float f1">🍳</div><div class="float f2">☕</div><div class="float f3">🛁</div><div class="float f4">🥣</div>
+<div class="parcel"><strong>entrybox.</strong><small>Good things inside</small></div>
+</div>
+</div>
+</section>
+<section class="wrap section" id="boxes">
+<div class="heading"><div><div class="eyebrow">FIND YOUR STARTING POINT</div><h2>A box for every beginning.</h2></div><p>Choose a ready-made favourite, then customise it. Every product is optional.</p></div>
+<div id="kits" class="kit-grid"><p>Loading boxes…</p></div>
+</section>
+<section class="banner"><div class="wrap"><div class="eyebrow">YOUR BOX, YOUR WAY</div><h2>Don't need the toaster? Remove it.<br>Need four more glasses? Add them.</h2><p>You're in control of what goes inside your box.</p></div></section>
+<section class="builder section" id="builder"><div class="wrap">
+<div class="eyebrow">BUILT BY YOU</div><h2>Build your perfect box.</h2>
+<p class="subhead">Start with a suggested pack or pick every item yourself. The website reads its catalogue from Supabase.</p>
+<div class="builder-grid">
+<div class="panel">
+<h3>Choose your essentials</h3>
+<div id="filters" class="filters"></div>
+<input id="search" type="search" placeholder="Search products..." aria-label="Search products">
+<div id="products" class="product-grid"></div>
+<div class="request">
+<h3>Can't find something you need?</h3>
+<p>Type what you'd like us to source. A price would be confirmed separately.</p>
+<form id="custom-form" class="custom-line">
+<input id="custom-input" required maxlength="100" placeholder="e.g. can opener, coat hangers" aria-label="Request another product">
+<button type="submit">+ Add</button>
+</form>
+</div>
+</div>
+<aside id="summary" class="panel summary">
+<div class="eyebrow">YOUR PERSONALISED PACKAGE</div>
+<h3 id="box-name">New Flat Box</h3>
+<p class="small">Here's what you're putting in your box.</p>
+<div id="selected-items" class="selected-items"></div>
+<div class="total"><span>Illustrative subtotal</span><strong id="total">A$0</strong></div>
+<p class="small">Example prices only. Packaging, delivery and requested items are excluded. No checkout is active.</p>
+<button id="review" class="primary full">Review my box →</button>
+</aside>
+</div></div></section>
+<section class="wrap section" id="how">
+<div class="eyebrow">NO MORE LONG SHOPPING LISTS</div><h2>Three steps. That's it.</h2>
+<div class="steps">
+<div><span>01</span><h3>Choose a box</h3><p>Start with New Flat, Kitchen, Picnic, Bathroom, Student—or nothing at all.</p></div>
+<div><span>02</span><h3>Make it yours</h3><p>See exactly what's included. Remove unwanted items or adjust quantities.</p></div>
+<div><span>03</span><h3>Everything together</h3><p>When EntryBox launches, we'll pack your essentials together for local delivery.</p></div>
+</div>
+</section>
+</main>
+<footer><div class="wrap footer"><div class="logo">entrybox<span class="dot">.</span></div><small>Brisbane, Queensland · Concept demonstration · No purchases or payment processing</small></div></footer>
+<div class="overlay" id="overlay" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title">Your EntryBox preview</h2><p>This is a design preview, not an order.</p><pre id="modal-contents"></pre><button class="primary full" id="close-modal">Continue customising</button></div></div>
+</body>
+</html>
